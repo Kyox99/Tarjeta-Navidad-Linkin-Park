@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linkin Park • Premium Christmas Card</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* 🎄✨ FONDO NAVIDEÑO PREMIUM */
+  body {
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,215,0,0.45), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(255,215,0,0.38), transparent 60%),
+      radial-gradient(circle at 15% 70%, rgba(255,255,255,0.10), transparent 55%),
+      radial-gradient(circle at 90% 20%, rgba(255,255,255,0.12), transparent 55%),
+      linear-gradient(135deg, #015a01, #b30000 45%, #8b0000 75%);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  /* ✨ SHIMMER DORADO ANIMADO */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255,215,0,0.12) 45%,
+      rgba(255,215,0,0.22) 50%,
+      rgba(255,215,0,0.12) 55%,
+      transparent 100%
+    );
+    animation: shineMove 6s infinite linear;
+    pointer-events: none;
+  }
+  @keyframes shineMove {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%);  }
+  }
+
+  /* ❄ COPOS ANIMADOS */
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    font-size: 14px;
+    color: white;
+    opacity: 0.9;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  /* 🎁 TARJETA */
+  .card {
+    width: min(500px, 95vw);
+    background: #fffdf7;
+    padding: 32px;
+    border-radius: 20px;
+    border: 4px solid gold;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 0 30px rgba(255,215,0,0.35),
+      0 0 60px rgba(0,0,0,0.45);
+  }
+
+  /* ⭐ LUCES NAVIDEÑAS DEL BORDE */
+  .lights {
+    position: absolute;
+    inset: -14px;
+    border-radius: 22px;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 10% 5%,   #ff5757 0 6px, transparent 7px),
+      radial-gradient(circle at 30% 5%,   #ffea00 0 6px, transparent 7px),
+      radial-gradient(circle at 50% 5%,   #2fff2f 0 6px, transparent 7px),
+      radial-gradient(circle at 70% 5%,   #ff5757 0 6px, transparent 7px),
+      radial-gradient(circle at 90% 5%,   #ffea00 0 6px, transparent 7px),
+      radial-gradient(circle at 5% 50%,   #2fff2f 0 6px, transparent 7px),
+      radial-gradient(circle at 95% 50%,  #ff5757 0 6px, transparent 7px),
+      radial-gradient(circle at 10% 95%,  #ffea00 0 6px, transparent 7px),
+      radial-gradient(circle at 30% 95%,  #2fff2f 0 6px, transparent 7px),
+      radial-gradient(circle at 50% 95%,  #ff5757 0 6px, transparent 7px),
+      radial-gradient(circle at 70% 95%,  #ffea00 0 6px, transparent 7px),
+      radial-gradient(circle at 90% 95%,  #2fff2f 0 6px, transparent 7px);
+    animation: blink 2.5s infinite alternate;
+  }
+  @keyframes blink {
+    0%   { opacity: 0.4; filter: brightness(0.8); }
+    50%  { opacity: 1;   filter: brightness(1.3); }
+    100% { opacity: 0.6; filter: brightness(1); }
+  }
+
+  /* 🔺 LOGO LP */
+  .lp-logo-wrap { display: flex; justify-content: center; margin-bottom: 10px; }
+
+  .lp-logo-icon {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    border: 3px solid gold;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 30% 0, #444, #000);
+    box-shadow: 0 0 16px rgba(255,215,0,0.6), 0 0 14px rgba(0,0,0,0.7);
+    position: relative;
+  }
+  .lp-logo-icon::before {
+    content: "";
+    position: absolute;
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 34px solid #000;
+    filter: drop-shadow(0 0 5px rgba(255,215,0,0.8));
+    top: 16px;
+  }
+
+  /* ⭐ TITULO */
+  .title-wrap { position: relative; display: inline-block; margin-bottom: 10px; padding-top: 20px; }
+
+  .star-moving {
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 28px; height: 28px;
+    background: radial-gradient(circle at 30% 0, #fffbe6, #ffd700);
+    clip-path: polygon(
+      50% 0%, 61% 35%, 98% 35%, 68% 57%,
+      79% 91%, 50% 72%, 21% 91%, 32% 57%,
+      2% 35%, 39% 35%
+    );
+    box-shadow: 0 0 16px rgba(255,215,0,0.9);
+    animation: starFloat 1.6s ease-in-out infinite;
+  }
+  @keyframes starFloat {
+    0%   { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
+    50%  { transform: translate(-50%, -5px) scale(1.12); opacity: 1; }
+    100% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #b00000;
+    text-shadow: 0 0 6px gold;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #0f7d32;
+    margin-bottom: 15px;
+  }
+
+  /* 🎄 ÁRBOL */
+  .tree {
+    width: 90px; height: 120px; margin: 0 auto 16px; position: relative;
+  }
+  .tree-part {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 40px solid #0f8a2a;
+  }
+  .tree-part:nth-child(2) { top: 30px; border-bottom-color: #11a63a; }
+  .tree-part:nth-child(3) { top: 55px; border-bottom-color: #16c251; }
+  .tree-trunk {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 22px; height: 28px;
+    background: #7b3f00; border-radius: 4px;
+  }
+
+  /* 📝 CARTA NAVIDEÑA ANIMADA */
+  .christmas-letter {
+    background: rgba(255, 248, 230, 0.85);
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 2px solid gold;
+    margin-top: 18px;
+    box-shadow: 0 0 15px rgba(255,215,0,0.35);
+    animation: letterFloat 4s ease-in-out infinite;
+  }
+  @keyframes letterFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+  }
+
+  .letter-title {
+    font-size: 1.5rem;
+    color: #b30000;
+    text-shadow: 0 0 6px gold;
+    margin-bottom: 12px;
+    animation: fadeIn 1.4s ease forwards;
+  }
+
+  .letter-line {
+    opacity: 0;
+    font-size: 0.95rem;
+    color: #4a2c00;
+    line-height: 1.55;
+    font-weight: 500;
+    margin-bottom: 10px;
+    animation: fadeInUp 1.4s ease forwards;
+  }
+  .delay1 { animation-delay: 0.4s; }
+  .delay2 { animation-delay: 1.0s; }
+  .delay3 { animation-delay: 1.6s; }
+  .delay4 { animation-delay: 2.2s; }
+
+  .letter-sign {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #8b0000;
+    text-shadow: 0 0 5px gold;
+    animation: fadeInUp 3s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 📤 BOTÓN SHARE */
+  .share-btn {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: #022c22;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    transition: 0.2s;
+  }
+  .share-btn:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.05); }
+</style>
+</head>
+
+<body>
+
+<script>
+  /* ❄ Generador de nieve */
+  function createSnow() {
+    const snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.textContent = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = 4 + Math.random() * 6 + "s";
+    snow.style.fontSize = 10 + Math.random() * 12 + "px";
+    document.body.appendChild(snow);
+    setTimeout(() => snow.remove(), 12000);
+  }
+  setInterval(createSnow, 180);
+</script>
+
+<div class="card">
+  <div class="lights"></div>
+
+  <div class="lp-logo-wrap">
+    <div class="lp-logo-icon"></div>
+  </div>
+
+  <div class="title-wrap">
+    <div class="star-moving"></div>
+    <h1>Merry Christmas!</h1>
+  </div>
+
+  <p class="subtitle">LINKIN PARK COMMUNITY</p>
+
+  <div class="tree">
+    <div class="tree-part"></div>
+    <div class="tree-part"></div>
+    <div class="tree-part"></div>
+    <div class="tree-trunk"></div>
+  </div>
+
+  <!-- 🎁 CARTA NAVIDEÑA ANIMADA -->
+  <div class="christmas-letter">
+    <h2 class="letter-title">🎄 Feliz Navidad 🎄</h2>
+
+    <p class="letter-line delay1">
+      En esta época donde la luz y los recuerdos se unen,  
+      deseo que la magia de la Navidad toque tu corazón.
+    </p>
+
+    <p class="letter-line delay2">
+      Que cada día te regale paz, esperanza  
+      y momentos que abracen tu alma con calidez.
+    </p>
+
+    <p class="letter-line delay3">
+      Que el próximo año llegue lleno de fuerza, oportunidades  
+      y alegrías que te sorprendan cuando más lo necesites.
+    </p>
+
+    <p class="letter-line delay4">
+      Hoy celebramos más que una fecha: celebramos a quienes  
+      hacen que la vida sea un viaje especial… y tú eres uno de ellos.
+    </p>
+
+    <p class="letter-sign">✨ Con cariño y gratitud — ¡Felices Fiestas! ✨</p>
+  </div>
+
+  <button class="share-btn" id="shareBtn">📤 Share this card</button>
+</div>
+
+<script>
+  /* 📤 Share */
+  const shareBtn = document.getElementById("shareBtn");
+  shareBtn.addEventListener("click", async () => {
+    const shareData = {
+      title: "Linkin Park • Christmas Card",
+      text: "Merry Christmas from the Linkin Park community 🎄✨",
+      url: window.location.href
+    };
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Link copied! 🎄✨");
+    }
+  });
+</script>
+
+</body>
+</html>
